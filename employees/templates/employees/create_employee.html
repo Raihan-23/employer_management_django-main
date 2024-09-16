@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>Add Employer</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ create_form.as_p }}
+    <button type="submit">Create</button>
+</form>
+{% endblock %}

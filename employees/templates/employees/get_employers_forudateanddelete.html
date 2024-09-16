@@ -1,0 +1,56 @@
+{% extends 'layout.html' %} {% block content %}
+
+<div class="relative container mx-auto overflow-x-auto shadow-md sm:rounded-lg">
+  <h1>Employers</h1>
+
+  <table
+    class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+  >
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-6 py-3">Name</th>
+        <th scope="col" class="px-6 py-3">Address</th>
+        <th scope="col" class="px-6 py-3">Phone No</th>
+        <th scope="col" class="px-6 py-3">Salary</th>
+        <th scope="col" class="px-6 py-3">Designation</th>
+        <th scope="col" class="px-6 py-3">Short Description</th>
+        <th scope="col" class="px-6 py-3">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employer in employers %}
+      <tr
+        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700"
+      >
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ employer.name }}
+        </th>
+        <td class="px-6 py-4">{{ employer.address }}</td>
+        <td class="px-6 py-4">{{ employer.phone_no }}</td>
+        <td class="px-6 py-4">{{ employer.salary }}</td>
+        <td class="px-6 py-4">{{ employer.designation }}</td>
+        <td class="px-6 py-4">{{ employer.short_description }}</td>
+        <td class="px-6 py-4">
+          <a
+            href="{% url 'update_employer' employer.pk %}"
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            >Update</a
+          >
+          <a
+            href="{% url 'delete_employer' employer.pk %}"
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
